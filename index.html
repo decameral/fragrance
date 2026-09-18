@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragrance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/logo.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dancing+Script:wght@400..700&family=La+Belle+Aurore&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=La+Belle+Aurore&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header_container">
+            <nav class="header_nav">
+                <a href="#hero" class="header_nav_main_logo">
+                    <p class="header_nav_main_name">fragrance</p>
+                    <p class="header_nav_lab_name">perfume lab</p>
+                </a>
+                <ul class="header_nav_list_all_text">
+                    <li class="header_nav_list_name">
+                        <a href="#instruction">
+                            <p class="header_nav_list_text">Инструкция</p>
+                        </a>
+                    </li>
+                    <li class="header_nav_list_name">
+                        <a href="#regime">
+                            <p class="header_nav_list_text">Выбор режима</p>
+                        </a>
+                    </li>
+                    <li class="header_nav_list_name">
+                        <a href="#end">
+                            <p class="header_nav_list_text">О нас</p>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="header_nav_list_icons">
+                    <li class="header_nav_list_icon">
+                        <a href="/">
+                            <svg width="38" height="38" viewBox="0 0 38 38" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <mask id="mask0_37_14" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                    width="38" height="38">
+                                    <rect width="38" height="38" fill="url(#pattern0_37_14)" />
+                                </mask>
+                                <g mask="url(#mask0_37_14)">
+                                    <rect class="svg_basket" y="-2.96875" width="42.4531" height="45.4219"
+                                        fill="white" />
+                                </g>
+                                <defs>
+                                    <pattern id="pattern0_37_14" patternContentUnits="objectBoundingBox" width="1"
+                                        height="1">
+                                        <use xlink:href="#image0_37_14" transform="scale(0.0078125)" />
+                                    </pattern>
+                                    <image id="image0_37_14" width="128" height="128" preserveAspectRatio="none"
+                                        xlink:href="data:image/png;base64,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" />
+                                </defs>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="header_nav_list_icon">
+                        <a href="/">
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <mask id="mask0_37_12" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                    width="31" height="31">
+                                    <rect width="31" height="31" fill="url(#pattern0_37_12)" />
+                                </mask>
+                                <g mask="url(#mask0_37_12)">
+                                    <rect class="svg_person" width="36.1667" height="37.3148" fill="white" />
+                                </g>
+                                <defs>
+                                    <pattern id="pattern0_37_12" patternContentUnits="objectBoundingBox" width="1"
+                                        height="1">
+                                        <use xlink:href="#image0_37_12" transform="scale(0.0078125)" />
+                                    </pattern>
+                                    <image id="image0_37_12" width="128" height="128" preserveAspectRatio="none"
+                                        xlink:href="data:image/png;base64,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" />
+                                </defs>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero_wallpaper_container">
+                <div class="hero_container">
+                    <div class="hero_content">
+                        <h1 class="hero_content_main_text">Создайте <span>уникальный аромат</span>, который отражает
+                            вашу индивидуальность</h1>
+                        <p class="hero_container_all_text">Персонализированный конструктор — от готовых настроений до
+                            полной свободы парфюмера. Соберите свою пирамиду нот, настройте флакон и получите аромат,
+                            которого больше нет ни у кого.</p>
+                        <div class="hero_container_buttons">
+
+                            <button class="hero_container_start_button">
+                                <a href="#regime">
+                                    <p class="hero_button_start_text">
+                                        Начать
+                                    </p>
+                                </a>
+                            </button>
+
+                            <button class="hero_container_scroll_button">
+                                <a href="#instruction" class="scroll_button_svg">
+                                    <svg width="15" height="26" viewBox="0 0 15 26" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_43_2)">
+                                            <path
+                                                d="M6.65686 25.7071C7.04738 26.0976 7.68055 26.0976 8.07107 25.7071L14.435 19.3431C14.8255 18.9526 14.8255 18.3195 14.435 17.9289C14.0445 17.5384 13.4113 17.5384 13.0208 17.9289L7.36396 23.5858L1.70711 17.9289C1.31659 17.5384 0.683417 17.5384 0.292893 17.9289C-0.0976311 18.3195 -0.0976311 18.9526 0.292893 19.3431L6.65686 25.7071ZM6.36396 0L6.36396 25H8.36396L8.36396 0H6.36396Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_43_2">
+                                                <rect width="26" height="15" fill="white"
+                                                    transform="matrix(0 -1 1 0 0 26)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                    <img src="images/main bottle.png" alt="" class="hero_bottle">
+                </div>
+            </div>
+        </section>
+        <section class="inctruction" id="instruction">
+            <div class="instruction_title_text_container">
+                <p class="instruction_small_text">
+                    <span class="instruction_small_text_gradient">
+                        Инструкция
+                    </span>
+                </p>
+                <h1 class="instruction_title">Три шага от идеи до флакона</h1>
+            </div>
+            <div class="instruction_wallpaper">
+                <div class="instruction_container">
+                    <div class="instruction_line_content">
+                        <ul class="instruction_line_content_list">
+                            <li class="instruction_list_window">
+                                <div class="instruction_window_line">
+                                    <p>
+                                        <span class="instruction_list_number">01</span>
+                                    </p>
+                                    <img src="images/line.svg" alt="" class="instruction_list_line">
+                                </div>
+                                <img src="images/clock.svg" alt="" class="instruction_list_icon">
+                                <h2>
+                                    <span class="instruction_list_title">
+                                        Выберите подход
+                                    </span>
+                                </h2>
+                                <p class="instruction_list_all_text">Для быстрой сборки по готовым аккордам или для
+                                    точечной
+                                    настройки каждой ноты.</p>
+                            </li>
+                            <li class="instruction_list_window">
+                                <div class="instruction_window_line">
+                                    <p>
+                                        <span class="instruction_list_number">02</span>
+                                    </p>
+                                    <img src="images/line.svg" alt="" class="instruction_list_line">
+                                </div>
+                                <img src="images/triangle.svg" alt="" class="instruction_list_icon">
+                                <h2>
+                                    <span class="instruction_list_title">
+                                        Соберите пирамиду
+                                    </span>
+                                </h2>
+                                <p class="instruction_list_all_text">
+                                    Выбирайте верхние, средние и базовые ноты из нашего каталога. Подберите объем,
+                                    дизайн
+                                    флакона и укажите собственное название на этикетке.
+                                </p>
+                            </li>
+                            <li class="instruction_list_window">
+                                <div class="instruction_window_line">
+                                    <p>
+                                        <span class="instruction_list_number">03</span>
+                                    </p>
+                                    <img src="images/line.svg" alt="" class="instruction_list_line">
+                                </div>
+                                <img src="images/bottle.svg" alt="" class="instruction_list_icon active">
+                                <h2>
+                                    <span class="instruction_list_title">
+                                        Получите парфюм
+                                    </span>
+                                </h2>
+                                <p class="instruction_list_all_text">Мы смешаем формулу вручную и доставим её прямо к
+                                    вашей
+                                    двери.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="regime" id="regime">
+            <div class="regime_title_text_container">
+                <p class="regime_small_text">
+                        <span class="regime_small_text_gradient">
+                            Выбор режима
+                        </span>
+                    </p>
+                    <h1 class="regime_title">Два способа создать свой аромат</h1>
+
+            </div>
+
+            <div class="regime_wallpaper">
+                <div class="regime_container">
+                    
+                    <div class="regime_line_content">
+                        <ul class="regime_line_content_list">
+                            <li class="regime_list_window">
+                                <p class="regine_window_aim">
+                                    Для новичков
+                                </p>
+                                <span class="regime_window_title">
+                                    Парфюмерный конструктор
+                                </span>
+                                <p class="regime_window_small_text">
+                                    Вам не нужно разбираться в химических нотах. Выбирайте желаемое настроение, стиль
+                                    или
+                                    готовые гармоничные аккорды.
+                                </p>
+                                <button class="regime_window_button first">
+                                    <a href="beginners.html">
+                                        <p class="regime_window_button_text"> Выбрать режим</p>
+                                    </a>
+                                </button>
+                            </li>
+                            <li class="regime_list_window">
+                                <p class="regine_window_aim active">
+                                    Для продвинутых
+                                </p>
+                                <span class="regime_window_title">
+                                    Парфюмерная лаборатория
+                                </span>
+                                <p class="regime_window_small_text">
+                                    Полный контроль над ольфакторной пирамидой. Настраивайте процентное соотношение
+                                    верхних,
+                                    средних и базовых нот вручную.
+                                </p>
+                                <button class="regime_window_button first">
+                                    <a href="/">
+                                        <p class="regime_window_button_text"> Выбрать режим</p>
+                                    </a>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </section>
+        <section class="end" id="end">
+            <div class="end_container">
+                <div class="end_column first">
+                    <div class="end_logo">
+                        <p class="header_nav_main_name">fragrance</p>
+                        <p class="header_nav_lab_name end_page">perfume lab</p>
+                    </div>
+                    <p class="end_column_text">
+                        Конструктор персонализированной парфюмерии: от готовых настроений до полного контроля над
+                        формулой.
+                    </p>
+                </div>
+                <div class="end_column second">
+                    <p class="column_name">
+                        Навигация
+                    </p>
+                    <div class="column_2_links">
+                        <a href="#instruction">
+                            <p class="end_column_text link">Инструкция</p>
+                        </a>
+                        <a href="#regime">
+                            <p class="end_column_text link">Выбор режима</p>
+                        </a>
+                        <a href="#end">
+                            <p class="end_column_text link">О нас</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="end_column third">
+                    <p class="column_name">
+                        Контакты
+                    </p>
+                    <div class="column_3_text">
+                        <p class="end_column_text">
+                            hello@fragrance-lab.com
+                        </p>
+                        <p class="end_column_text">
+                            +375 (29) 000-00-00
+                        </p>
+                    </div>
+                </div>
+                <div class="end_column forth">
+                    <p class="column_name">
+                        Рассылка
+                    </p>
+                    <p class="end_column_text">
+                        Новые ноты, коллаборации и <br>ограниченные партии — без спама.
+                    </p>
+                    <input type="email" placeholder="Ваш e-mail" class="end_email">
+                    <button class="end_subscribe_button">Подписаться</button>
+                </div>
+            </div>
+            <div class="end_line">
+                <svg width="1090" height="1" viewBox="0 0 1090 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line y1="0.5" x2="1090" y2="0.5" stroke="#9C9094" />
+                </svg>
+                <p class="end_column_text">© 2026 NOTA. Все ароматы уникальны.</p>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
