@@ -1,45 +1,46 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
-const cors = require('cors');
+const path = require('node:path');
+const { createPool } = require('./db/pool');
+const { quote } = require('./lib/quote');
 
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-
-// Настройки подключения к вашей БД
-const pool = mysql.createPool({
-  host: '127.0.0.1',
-  user: 'root',            // Ваш логин в MySQL
-  password: 'Minion2006#',   // Укажите ваш пароль от MySQL!
-  database: 'scent_craft_db',
-  waitForConnections: true,
-  connectionLimit: 10
-});
-
-// Эндпоинт для отдачи атмосфер и акцентов
-app.get('/api/atmospheres', async (req, res) => {
-  try {
-    const [atmospheres] = await pool.query('SELECT * FROM atmospheres');
-
-    for (let item of atmospheres) {
-      const [accents] = await pool.query(
-        `SELECT a.* FROM accents a 
-         JOIN atmosphere_accents aa ON a.id = aa.accent_id 
-         WHERE aa.atmosphere_id = ?`,
-        [item.id]
-      );
-      item.accents = accents;
-    }
-
-    res.json(atmospheres);
-  } catch (error) {
-    console.error('Ошибка MySQL:', error);
-    res.status(500).json({ error: 'Ошибка сервера при получении данных' });
+function createApp(pool) {
+  const app = express();
+  app.disable('x-powered-by');
+  app.use(express.json({ limit: '16kb' }));
+  // Publish only client assets, never the repository root.
+  for (const file of ['index.html', 'beginners.html', 'beginners.js', 'style.css']) {
+    app.get(`/${file}`, (req, res) => res.sendFile(path.join(__dirname, file)));
   }
-});
-
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
-});
+  app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+  app.use('/images', express.static(path.join(__dirname, 'images'), { dotfiles: 'deny', index: false }));
+  app.get('/api/atmospheres', async (req, res) => {
+    const [atmospheres] = await pool.query('SELECT * FROM atmospheres ORDER BY title');
+    const [accents] = await pool.query(`SELECT n.*, aa.atmosphere_id FROM accents n
+      JOIN atmosphere_accents aa ON aa.accent_id = n.id ORDER BY n.name`);
+    res.json(atmospheres.map(atmosphere => ({ ...atmosphere,
+      accents: accents.filter(note => note.atmosphere_id === atmosphere.id)
+        .map(({ atmosphere_id, ...note }) => note),
+    })));
+  });
+  app.get('/api/bottles', async (req, res) => {
+    const [bottles] = await pool.query('SELECT id, name, volume_ml, price FROM bottles WHERE active = TRUE ORDER BY volume_ml, price');
+    res.json(bottles);
+  });
+  app.post('/api/quote', async (req, res) => res.json(await quote(pool, req.body)));
+  app.use('/api', (req, res) => res.status(404).json({ error: 'Маршрут не найден.' }));
+  app.use((error, req, res, next) => {
+    const status = error.status || 500;
+    if (status >= 500) console.error('Ошибка запроса:', error.code || error.name);
+    res.status(status).json({ error: status >= 500 ? 'Сервис временно недоступен. Попробуйте позже.'
+      : error.type === 'entity.parse.failed' ? 'Некорректный JSON.' : error.type === 'entity.too.large' ? 'Запрос слишком большой.' : error.message });
+  });
+  return app;
+}
+if (require.main === module) {
+  const pool = createPool();
+  const server = createApp(pool).listen(Number(process.env.PORT || 3000), '127.0.0.1', () => {
+    console.log(`Fragrance: http://localhost:${process.env.PORT || 3000}`);
+  });
+  for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => server.close(() => pool.end()));
+}
+module.exports = { createApp };

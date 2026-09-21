@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -29,7 +29,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body class="constructor-page">
     <header class="header">
         <div class="header_container">
             <nav class="header_nav">
@@ -93,14 +93,17 @@
                 <div class="catalog_text_container">
                     <h2 class="section_title">Выберите атмосферу — соберите свой аромат</h2>
                     <p class="section_little_text">Каждая атмосфера — это готовая база с характером. Откройте карточку,
-                        добавьте акценты по вкусу и зафиксируйте свой рецепт.</p>
+                        добавьте подходящую ноту и создайте свой аромат.</p>
 
                 </div>
 
             </div>
             <div class="catalog_container">
-
-
+                <div class="catalog-tools">
+                    <label>Найти атмосферу <input id="catalog-search" type="search" placeholder="Название или описание"></label>
+                    <label>Порядок <select id="catalog-sort"><option value="asc">От А до Я</option><option value="desc">От Я до А</option></select></label>
+                </div>
+                <p id="catalog-status" role="status"></p>
                 <div id="atmospheres-grid" class="atmospheres-grid">
 
                     <div class="loading">Загрузка ароматов...</div>
@@ -109,6 +112,41 @@
             </div>
 
         </section>
+        <dialog id="constructor-dialog" aria-labelledby="constructor-title">
+            <div class="wizard-header">
+                <p class="eyebrow">FRAGRANCE · ВАШ АРОМАТ</p>
+                <button id="close-constructor" class="text-button" type="button" aria-label="Закрыть конструктор">Закрыть ×</button>
+            </div>
+            <h2 id="constructor-title">Создайте свой аромат</h2>
+            <p id="chosen-atmosphere"></p>
+            <ol class="wizard-steps" aria-label="Этапы конструктора">
+                <li data-step="0">1. Нота</li><li data-step="1">2. Флакон</li><li data-step="2">3. Название</li>
+            </ol>
+            <form id="constructor-form">
+                <section id="accent-step" class="wizard-panel">
+                    <h3>Какой оттенок добавить?</h3>
+                    <div id="accent-options" class="choice-grid"></div>
+                </section>
+                <section id="bottle-step" class="wizard-panel" hidden>
+                    <h3>Выберите объём и форму</h3>
+                    <div id="bottle-options" class="choice-grid"></div>
+                </section>
+                <section id="name-step" class="wizard-panel" hidden>
+                    <h3>Дайте аромату имя</h3>
+                    <label for="perfume-name">Название на флаконе</label>
+                    <input id="perfume-name" maxlength="80" placeholder="Например, Лес после дождя" autocomplete="off">
+                    <p class="field-hint">От 1 до 80 символов. Это название сохранится в вашем черновике.</p>
+                    <dl id="composition-summary"></dl>
+                </section>
+                <p id="wizard-status" role="status" aria-live="polite"></p>
+                <div class="wizard-price"><span>Стоимость флакона</span><strong id="quote-total">Выберите параметры</strong></div>
+                <p class="field-hint">Черновик хранится только в этом браузере. Оформление заказа появится на следующем этапе.</p>
+                <div class="wizard-actions">
+                    <button id="previous-step" class="secondary-button" type="button">Назад</button>
+                    <button id="next-step" class="primary-button" type="submit">Далее</button>
+                </div>
+            </form>
+        </dialog>
     </main>
 
     <script src="beginners.js"></script>

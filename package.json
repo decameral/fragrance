@@ -1,10 +1,13 @@
 {
-  "name": "3_project_perfume",
+  "name": "fragrance",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Конструктор индивидуальной парфюмерии Fragrance",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --env-file=.env server.js",
+    "dev": "node --env-file=.env --watch server.js",
+    "test": "node --test tests/*.test.js",
+    "migrate": "node --env-file=.env scripts/migrate.js"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +17,8 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "mysql2": "^3.23.3"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
