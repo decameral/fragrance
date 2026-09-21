@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет — Fragrance</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="account.css">
+  <link rel="icon" href="images/logo.svg">
+</head>
+<body class="account-page">
+  <header class="account-header">
+    <a class="account-brand" href="/">Fragrance <small>perfume lab</small></a>
+    <nav aria-label="Навигация покупателя"><a href="/beginners.html">Создать аромат</a><a href="#cart">Корзина</a><a href="#orders">Мои заказы</a></nav>
+  </header>
+  <main class="account-main">
+    <p class="eyebrow">ВАША КОЛЛЕКЦИЯ АРОМАТОВ</p>
+    <h1>Личный кабинет</h1>
+    <p id="page-status" role="status" aria-live="polite">Загружаем аккаунт…</p>
+    <button id="reload-account" class="secondary-button" type="button" hidden>Повторить загрузку</button>
+    <section id="auth-section" class="account-card" hidden>
+      <h2>Добро пожаловать</h2>
+      <p>Войдите, чтобы сохранить композицию в корзине и оформить заказ.</p>
+      <div class="account-tabs"><button id="login-tab" class="secondary-button" aria-pressed="true">Вход</button><button id="register-tab" class="secondary-button" aria-pressed="false">Регистрация</button></div>
+      <form id="auth-form" class="account-form">
+        <label id="register-name-label" hidden>Имя<input id="register-name" maxlength="80" autocomplete="name"></label>
+        <label>Email<input id="auth-email" type="email" maxlength="254" autocomplete="username" required></label>
+        <label>Пароль<input id="auth-password" type="password" autocomplete="current-password" required></label>
+        <p id="password-help" class="field-hint" hidden>Не менее 8 символов. Для длинных паролей допустимо до 72 байт UTF-8.</p>
+        <button id="auth-submit" class="primary-button">Войти</button>
+        <p id="auth-status" role="status"></p>
+      </form>
+    </section>
+    <div id="customer-section" hidden>
+      <section class="account-card">
+        <div class="section-heading"><h2 id="greeting">Мой профиль</h2><button id="logout" class="text-button">Выйти</button></div>
+        <p id="profile-email"></p>
+        <form id="profile-form" class="account-form profile-grid">
+          <label>Имя<input id="profile-name" maxlength="80" autocomplete="name" required></label>
+          <label>Телефон<input id="profile-phone" type="tel" maxlength="30" autocomplete="tel"></label>
+          <button class="secondary-button">Сохранить профиль</button>
+          <p id="profile-status" role="status"></p>
+        </form>
+      </section>
+      <section id="cart" class="account-card">
+        <div class="section-heading"><h2>Корзина</h2><a href="/beginners.html">Добавить аромат</a></div>
+        <p id="cart-status" role="status"></p>
+        <div id="cart-items"></div>
+        <div id="cart-total" class="order-total"></div>
+        <form id="checkout-form" class="account-form" hidden>
+          <h3>Оформление заказа</h3>
+          <p>Самовывоз. Оплата при получении; онлайн-оплата не требуется.</p>
+          <label>Имя получателя<input id="checkout-name" maxlength="80" autocomplete="name" required></label>
+          <label>Контактный телефон<input id="checkout-phone" type="tel" maxlength="30" autocomplete="tel" required></label>
+          <label>Комментарий к заказу<textarea id="checkout-comment" maxlength="500" rows="3"></textarea></label>
+          <button id="checkout-button" class="primary-button">Подтвердить заказ</button>
+          <p id="checkout-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section id="orders" class="account-card">
+        <h2>Мои заказы</h2><p class="field-hint">Последние 100 заказов. Новый заказ можно отменить до начала обработки.</p>
+        <p id="orders-status" role="status"></p><div id="orders-list"></div>
+      </section>
+    </div>
+  </main>
+  <script src="client.js"></script>
+  <script src="account.js"></script>
+</body>
+</html>

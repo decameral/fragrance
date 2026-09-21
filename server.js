@@ -2,13 +2,14 @@ const express = require('express');
 const path = require('node:path');
 const { createPool } = require('./db/pool');
 const { quote } = require('./lib/quote');
+const { customerRoutes } = require('./routes/customer');
 
-function createApp(pool) {
+function createApp(pool, options = {}) {
   const app = express();
   app.disable('x-powered-by');
   app.use(express.json({ limit: '16kb' }));
   // Publish only client assets, never the repository root.
-  for (const file of ['index.html', 'beginners.html', 'beginners.js', 'style.css']) {
+  for (const file of ['index.html', 'beginners.html', 'beginners.js', 'style.css', 'account.html', 'account.js', 'client.js', 'account.css']) {
     app.get(`/${file}`, (req, res) => res.sendFile(path.join(__dirname, file)));
   }
   app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
@@ -27,6 +28,11 @@ function createApp(pool) {
     res.json(bottles);
   });
   app.post('/api/quote', async (req, res) => res.json(await quote(pool, req.body)));
+  const customer = customerRoutes(pool, options.sessionSecret || process.env.SESSION_SECRET);
+  app.use('/api', (req, res, next) => {
+    if (/^\/(auth|cart|orders|profile)(\/|$)/.test(req.path)) return customer(req, res, next);
+    next();
+  });
   app.use('/api', (req, res) => res.status(404).json({ error: 'Маршрут не найден.' }));
   app.use((error, req, res, next) => {
     const status = error.status || 500;

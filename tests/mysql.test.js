@@ -34,7 +34,7 @@ test('MySQL migration preserves catalogue, is repeatable, and supports quote API
   await pool.query('UPDATE bottles SET active = FALSE WHERE id = 1');
   await assert.rejects(quote(pool, selection), { status: 422 });
   await pool.query('UPDATE bottles SET active = TRUE WHERE id = 1');
-  const server = createApp(pool).listen(0, '127.0.0.1');
+  const server = createApp(pool, { sessionSecret: require('node:crypto').randomBytes(32).toString('hex') }).listen(0, '127.0.0.1');
   await new Promise(resolve => server.once('listening', resolve));
   t.after(() => new Promise(resolve => server.close(resolve)));
   const base = `http://127.0.0.1:${server.address().port}`;

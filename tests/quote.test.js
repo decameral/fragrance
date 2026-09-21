@@ -25,7 +25,7 @@ test('quote uses server prices and rejects incompatible or missing components', 
   await assert.rejects(quote({ execute: async sql => [sql.includes('FROM atmospheres') ? [composition] : []] }, input), { status: 422 });
 });
 test('HTTP validates input and does not publish private project files', async t => {
-  const server = createApp({}).listen(0, '127.0.0.1');
+  const server = createApp({}, { sessionSecret: require('node:crypto').randomBytes(32).toString('hex') }).listen(0, '127.0.0.1');
   await new Promise(resolve => server.once('listening', resolve));
   t.after(() => new Promise(resolve => server.close(resolve)));
   const url = `http://127.0.0.1:${server.address().port}`;
