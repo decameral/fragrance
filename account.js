@@ -30,6 +30,7 @@ async function load() {
   byId('reload-account').hidden = true;
   try {
     ({ user } = await session());
+    byId('admin-link').hidden = user?.role !== 'admin';
     byId('auth-section').hidden = !!user; byId('customer-section').hidden = !user;
     byId('page-status').textContent = '';
     if (!user) return;
@@ -128,6 +129,7 @@ byId('auth-form').addEventListener('submit', async event => {
     });
     byId('auth-password').value = '';
     if (new URLSearchParams(location.search).get('return') === 'constructor') { location.href = '/beginners.html?resume=1'; return; }
+    if (new URLSearchParams(location.search).get('return') === 'admin') { location.href = '/admin.html'; return; }
     await load();
   } catch (error) { report('auth-status', error); }
   finally { byId('auth-submit').disabled = false; }

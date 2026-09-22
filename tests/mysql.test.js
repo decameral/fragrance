@@ -143,4 +143,5 @@ test('MySQL migration preserves catalogue, is repeatable, and supports quote API
     assert.equal((await alice.call('/api/auth/login', 'POST', { email: 'alice@example.test', password })).status, 200);
     assert.equal((await alice.call('/api/orders')).data.orders.length, 1);
   });
+  await require('./admin-workflow')(t, { pool, client, alice, bob, anonymous, password, base });
 });

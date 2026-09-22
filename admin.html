@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Управление магазином — Fragrance</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="account.css">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" href="images/logo.svg">
+</head>
+<body class="account-page">
+  <header class="account-header">
+    <a class="account-brand" href="/">Fragrance <small>perfume lab</small></a>
+    <nav aria-label="Навигация администратора"><a href="/beginners.html">Витрина</a><a href="/account.html">Личный кабинет</a></nav>
+  </header>
+  <main class="account-main">
+    <p class="eyebrow">КАТАЛОГ И ЗАКАЗЫ</p><h1>Управление магазином</h1>
+    <p id="admin-status" role="status" aria-live="polite">Проверяем доступ…</p>
+    <a id="admin-login" href="/account.html?return=admin" hidden>Войти в аккаунт администратора</a>
+    <button id="admin-retry" class="secondary-button" hidden>Повторить загрузку</button>
+    <div id="admin-content" hidden>
+      <div class="admin-tabs" aria-label="Разделы управления">
+        <button type="button" data-kind="atmospheres" aria-pressed="true">Атмосферы</button>
+        <button type="button" data-kind="accents" aria-pressed="false">Акцентные ноты</button>
+        <button type="button" data-kind="bottles" aria-pressed="false">Флаконы</button>
+        <button type="button" data-kind="orders" aria-pressed="false">Заказы</button>
+      </div>
+      <section class="account-card">
+        <div class="section-heading"><h2 id="list-title">Атмосферы</h2><button id="create-record" class="primary-button">Добавить</button></div>
+        <form id="catalog-filters" class="admin-filters">
+          <label>Поиск по названию или коду<input id="catalog-query" maxlength="100" type="search"></label>
+          <label>Доступность<select id="catalog-state"><option value="all">Все позиции</option><option value="active">Доступные</option><option value="hidden">Скрытые</option></select></label>
+          <label>Сортировка<select id="catalog-order"><option value="name:asc">Название: А–Я</option><option value="name:desc">Название: Я–А</option><option value="price:asc">Цена: по возрастанию</option><option value="price:desc">Цена: по убыванию</option></select></label>
+          <button class="secondary-button">Применить фильтры</button>
+        </form>
+        <form id="order-filters" class="admin-filters" hidden>
+          <label>Номер заказа<input id="order-number" type="number" min="1" step="1"></label>
+          <label>Статус<select id="order-status"><option value="">Все статусы</option><option value="new">Новый</option><option value="processing">В работе</option><option value="completed">Завершён</option><option value="cancelled">Отменён</option></select></label>
+          <label>Оформлен с<input id="order-from" type="date"></label><label>Оформлен по<input id="order-to" type="date"></label>
+          <button class="secondary-button">Найти заказы</button>
+        </form>
+        <p id="list-status" role="status"></p><div id="records"></div>
+        <div class="admin-pagination"><button id="previous-page" class="secondary-button">Предыдущая</button><span id="page-label"></span><button id="next-page" class="secondary-button">Следующая</button></div>
+      </section>
+      <section id="editor" class="account-card" hidden>
+        <div class="section-heading"><h2 id="editor-title">Редактирование</h2><button id="close-editor" class="text-button">Закрыть редактор</button></div>
+        <form id="record-form" class="account-form"><div id="editor-fields"></div><button class="primary-button">Сохранить позицию</button><p id="editor-status" role="status"></p></form>
+      </section>
+      <section id="compatibility" class="account-card" hidden>
+        <h2 id="compatibility-title">Совместимые ноты</h2>
+        <p class="field-hint">Отметьте ноты, которые подходят к этой атмосфере. Скрытые ноты не показываются покупателям. Сохранение пустого списка уберёт все варианты акцента.</p>
+        <form id="compatibility-form"><div id="compatibility-options" class="compatibility-grid"></div><button class="primary-button">Сохранить совместимость</button><button id="close-compatibility" class="text-button" type="button">Закрыть</button><p id="compatibility-status" role="status"></p></form>
+      </section>
+      <section id="order-detail" class="account-card" hidden>
+        <div class="section-heading"><h2 id="order-title">Заказ</h2><button id="close-order" class="text-button">Закрыть заказ</button></div>
+        <div id="order-body"></div>
+        <form id="change-status" class="account-form" hidden><label>Новый статус<select id="next-status"></select></label><button class="primary-button">Изменить статус</button></form>
+        <p id="order-message" role="status"></p>
+      </section>
+    </div>
+  </main>
+  <script src="client.js"></script><script src="admin.js"></script>
+</body>
+</html>

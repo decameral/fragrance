@@ -7,6 +7,7 @@ const { MysqlSessionStore } = require('../lib/session-store');
 const { InputError } = require('../lib/quote');
 const validate = require('../lib/validation');
 const { cart, changeCart, checkout, getOrder } = require('../lib/shop');
+const { adminRoutes } = require('./admin');
 
 const csrf = () => randomBytes(32).toString('hex');
 const invoke = (object, method) => new Promise((resolve, reject) => object[method](error => error ? reject(error) : resolve()));
@@ -79,6 +80,7 @@ function customerRoutes(pool, secret) {
     res.json({ ok: true });
   });
   router.use((req, res, next) => { if (!req.user) throw new InputError('Войдите в аккаунт.', 401); next(); });
+  router.use('/admin', adminRoutes(pool));
   router.patch('/profile', async (req, res) => {
     const name = validate.text(req.body.name, 'Имя', 80);
     const phone = req.body.phone === '' ? '' : validate.phone(req.body.phone);

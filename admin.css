@@ -1,0 +1,27 @@
+.admin-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+.admin-tabs button { font: inherit; padding: 12px 18px; border: 1px solid #b7aaa4; border-radius: 8px; background: #fffdfa; color: #594535; cursor: pointer; }
+.admin-tabs [aria-pressed="true"] { background: #594535; color: white; }
+.admin-filters { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin-bottom: 20px; }
+.admin-filters label { display: grid; gap: 6px; flex: 1 1 170px; }
+.admin-filters input, .admin-filters select, #editor select, #next-status { width: 100%; min-width: 0; padding: 11px; font: inherit; border: 1px solid #b7aaa4; border-radius: 7px; background: white; }
+.admin-record { display: grid; grid-template-columns: 1fr auto; gap: 16px; border-top: 1px solid #ded2c8; padding: 20px 0; }
+.admin-record h3, .admin-record p { overflow-wrap: anywhere; }
+.admin-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.admin-actions button { padding: 8px 12px; }
+.visibility-badge { display: inline-block; font-size: 12px; padding: 3px 8px; border-radius: 6px; background: #e7ecdd; color: #35402b; margin: 5px 0; }
+.visibility-badge.hidden-record { background: #eee4df; color: #795b4e; }
+.admin-pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+#editor-fields { display: grid; gap: 16px; }
+#editor-fields .checkbox-label { display: flex; align-items: center; gap: 10px; }
+#editor-fields input[type="checkbox"] { width: auto; }
+.compatibility-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 20px 0; }
+.compatibility-grid label { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #ded2c8; border-radius: 8px; }
+#order-body ul { list-style: disc; padding-left: 22px; margin: 18px 0; }
+#order-body li { margin-bottom: 12px; overflow-wrap: anywhere; }
+#order-body p { overflow-wrap: anywhere; }
+#editor, #compatibility, #order-detail { scroll-margin-top: 20px; }
+@media (max-width: 700px) {
+  .admin-record { grid-template-columns: 1fr; }
+  .compatibility-grid { grid-template-columns: 1fr; }
+  .admin-pagination { justify-content: start; }
+}
