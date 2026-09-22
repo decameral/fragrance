@@ -86,6 +86,8 @@ module.exports = async function adminWorkflow(t, { pool, client, alice, bob, ano
     assert.equal(history.items[0].atmosphere_title, 'Обновлённая атмосфера');
     assert.equal(history.total_minor, 4550);
     assert.equal(history.status, 'completed');
+    assert.deepEqual(history.history.map(event => event.to_status), ['new', 'processing', 'completed']);
+    assert.deepEqual(history.history.map(event => event.event_kind), ['created', 'changed', 'changed']);
   });
   await t.test('revoked admin role takes effect in the existing session', async () => {
     await pool.execute("UPDATE users SET role = 'customer' WHERE email = ?", ['admin@example.test']);

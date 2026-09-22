@@ -3,8 +3,8 @@ const catalog = require('../lib/catalog');
 const { InputError } = require('../lib/quote');
 const { id } = require('../lib/validation');
 const { getOrder } = require('../lib/shop');
+const { allowed, changeStatus } = require('../lib/order-status');
 
-const transitions = { new: ['processing', 'cancelled'], processing: ['completed', 'cancelled'], completed: [], cancelled: [] };
 function date(value) {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value) || !Number.isFinite(Date.parse(value)) || new Date(value).toISOString().slice(0, 10) !== value) throw new InputError('Некорректная дата.');
   return value;
@@ -39,7 +39,9 @@ function adminRoutes(pool) {
     const where = []; const args = [];
     if (req.query.number) { where.push('id = ?'); args.push(id(req.query.number)); }
     if (req.query.status) {
-      if (!Object.hasOwn(transitions, req.query.status)) throw new InputError('Некорректный статус.');
+      if (typeof req.query.status !== 'string') throw new InputError('Некорректный статус.');
+      const [[status]] = await pool.execute('SELECT code FROM order_statuses WHERE code = ?', [req.query.status]);
+      if (!status) throw new InputError('Некорректный статус.');
       where.push('status = ?'); args.push(req.query.status);
     }
     if (req.query.from) { where.push('created_at >= ?'); args.push(date(req.query.from)); }
@@ -55,13 +57,11 @@ function adminRoutes(pool) {
     const [[owner]] = await pool.execute('SELECT user_id FROM orders WHERE id = ?', [orderId]);
     if (!owner) throw new InputError('Заказ не найден.', 404);
     const order = await getOrder(pool, owner.user_id, orderId);
-    res.json({ ...order, allowedStatuses: transitions[order.status] });
+    res.json({ ...order, allowedStatuses: await allowed(pool, order.status, 'admin') });
   });
   router.patch('/orders/:id/status', async (req, res) => {
     const { status, expectedStatus } = req.body;
-    if (!Object.hasOwn(transitions, expectedStatus) || !transitions[expectedStatus].includes(status)) throw new InputError('Недопустимый переход статуса.', 422);
-    const [result] = await pool.execute('UPDATE orders SET status = ? WHERE id = ? AND status = ?', [status, id(req.params.id), expectedStatus]);
-    if (!result.affectedRows) throw new InputError('Заказ изменён другим пользователем или не найден. Обновите список.', 409);
+    await changeStatus(pool, id(req.params.id), req.user.id, 'admin', expectedStatus, status);
     res.json({ ok: true });
   });
   return router;

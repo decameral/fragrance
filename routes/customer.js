@@ -8,6 +8,7 @@ const { InputError } = require('../lib/quote');
 const validate = require('../lib/validation');
 const { cart, changeCart, checkout, getOrder } = require('../lib/shop');
 const { adminRoutes } = require('./admin');
+const { changeStatus } = require('../lib/order-status');
 
 const csrf = () => randomBytes(32).toString('hex');
 const invoke = (object, method) => new Promise((resolve, reject) => object[method](error => error ? reject(error) : resolve()));
@@ -98,8 +99,7 @@ function customerRoutes(pool, secret) {
   });
   router.get('/orders/:id', async (req, res) => res.json(await getOrder(pool, req.user.id, validate.id(req.params.id))));
   router.post('/orders/:id/cancel', async (req, res) => {
-    const [result] = await pool.execute("UPDATE orders SET status = 'cancelled' WHERE id = ? AND user_id = ? AND status = 'new'", [validate.id(req.params.id), req.user.id]);
-    if (!result.affectedRows) throw new InputError('Заказ недоступен для отмены.', 409);
+    await changeStatus(pool, validate.id(req.params.id), req.user.id, 'customer', 'new', 'cancelled', true);
     res.json({ ok: true });
   });
   return router;
