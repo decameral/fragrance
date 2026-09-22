@@ -50,6 +50,12 @@ async function loadCatalogue() {
   try {
     state.atmospheres = await api('/api/atmospheres');
     renderCatalogue();
+    if (new URLSearchParams(location.search).get('resume') === '1') {
+      const draft = readDraft();
+      const atmosphere = state.atmospheres.find(item => item.id === draft.atmosphereId);
+      if (atmosphere) await openConstructor(atmosphere);
+      history.replaceState(null, '', '/beginners.html');
+    }
   } catch {
     $('atmospheres-grid').replaceChildren();
     $('catalog-status').textContent = 'Не удалось загрузить каталог. Проверьте соединение и повторите попытку.';
@@ -114,8 +120,9 @@ function renderStep() {
     else node.removeAttribute('aria-current');
   });
   $('previous-step').disabled = state.step === 0;
-  $('next-step').textContent = state.step === 2 ? 'Сохранить черновик' : 'Далее';
-  $('next-step').disabled = state.step === 0 ? !state.accentId : !state.quote;
+  $('next-step').textContent = state.step === 2 ? 'Добавить в корзину' : 'Далее';
+  $('next-step').disabled = !!state.busy || (state.step === 0 ? !state.accentId : !state.quote);
+  $('save-draft').hidden = state.step !== 2;
   $('quote-total').textContent = state.quote ? currency(state.quote.totalMinor) : 'Выберите параметры';
   const summary = $('composition-summary'); summary.replaceChildren();
   if (state.quote) {
@@ -145,15 +152,35 @@ async function refreshQuote() {
 }
 $('constructor-form').addEventListener('submit', async event => {
   event.preventDefault();
+  if (state.busy) return;
   if (state.step === 0 && !state.accentId || state.step > 0 && !state.quote) return;
   if (state.step < 2) { state.step++; renderStep(); if (state.step === 2) $('perfume-name').focus(); return; }
   const name = $('perfume-name').value.trim();
   if (!name || name.length > 80) { $('wizard-status').textContent = 'Введите название от 1 до 80 символов.'; $('perfume-name').focus(); return; }
   try {
+    state.busy = true; renderStep();
+    const composition = { atmosphereId: state.atmosphere.id, accentId: state.accentId, bottleId: state.bottleId, name };
+    const { user } = await Fragrance.session();
+    if (!user) {
+      try { localStorage.setItem(draftKey, JSON.stringify(composition)); }
+      catch { throw new Error('Разрешите сохранение данных в браузере, чтобы сохранить композицию при входе.'); }
+      location.href = '/account.html?return=constructor'; return;
+    }
+    await Fragrance.send('/api/cart', 'POST', { ...composition, quantity: 1 });
+    $('constructor-dialog').close();
+    $('catalog-status').textContent = 'Аромат добавлен в корзину. ';
+    const link = element('a', 'primary-button', 'Перейти в корзину'); link.href = '/account.html#cart';
+    $('catalog-status').append(link);
+  } catch (error) { $('wizard-status').textContent = error.message || 'Не удалось добавить аромат. Попробуйте ещё раз.'; }
+  finally { state.busy = false; renderStep(); }
+});
+$('save-draft').addEventListener('click', () => {
+  const name = $('perfume-name').value.trim();
+  if (!name) { $('wizard-status').textContent = 'Введите название аромата.'; return; }
+  try {
     localStorage.setItem(draftKey, JSON.stringify({ atmosphereId: state.atmosphere.id, accentId: state.accentId, bottleId: state.bottleId, name }));
-    state.name = name;
-    $('wizard-status').textContent = 'Черновик сохранён в этом браузере. Это ещё не заказ.';
-  } catch { $('wizard-status').textContent = 'Браузер не разрешает сохранить черновик. Выбранные параметры останутся до закрытия страницы.'; }
+    $('wizard-status').textContent = 'Черновик сохранён на этом устройстве.';
+  } catch { $('wizard-status').textContent = 'Браузер не разрешает сохранить черновик.'; }
 });
 $('perfume-name').addEventListener('input', () => { state.name = $('perfume-name').value; });
 $('previous-step').addEventListener('click', () => { state.step = Math.max(0, state.step - 1); $('wizard-status').textContent = ''; renderStep(); });

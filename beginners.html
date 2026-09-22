@@ -39,7 +39,7 @@
                 </a>
                 <ul class="header_nav_list_icons">
                     <li class="header_nav_list_icon">
-                        <a href="/">
+                        <a href="/account.html#cart" aria-label="Корзина">
                             <svg width="38" height="38" viewBox="0 0 38 38" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <mask id="mask0_37_14" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li class="header_nav_list_icon">
-                        <a href="/">
+                        <a href="/account.html" aria-label="Личный кабинет">
                             <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <mask id="mask0_37_12" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
@@ -140,7 +140,8 @@
                 </section>
                 <p id="wizard-status" role="status" aria-live="polite"></p>
                 <div class="wizard-price"><span>Стоимость флакона</span><strong id="quote-total">Выберите параметры</strong></div>
-                <p class="field-hint">Черновик хранится только в этом браузере. Оформление заказа появится на следующем этапе.</p>
+                <p class="field-hint">Сохраните черновик на устройстве или добавьте аромат в корзину. Для оформления нужен аккаунт.</p>
+                <button id="save-draft" class="text-button" type="button" hidden>Сохранить черновик</button>
                 <div class="wizard-actions">
                     <button id="previous-step" class="secondary-button" type="button">Назад</button>
                     <button id="next-step" class="primary-button" type="submit">Далее</button>
@@ -149,6 +150,7 @@
         </dialog>
     </main>
 
+    <script src="client.js"></script>
     <script src="beginners.js"></script>
 </body>
 
