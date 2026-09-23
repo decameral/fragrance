@@ -1,0 +1,36 @@
+/* Responsive adjustments for the original landing page. */
+.home-page .header_container,
+.home-page .hero_container,
+.home-page .instruction_container,
+.home-page .instruction_title_text_container,
+.home-page .regime_container,
+.home-page .regime_title_text_container,
+.home-page .end_container,
+.home-page .end_line { width: min(1090px, calc(100% - 40px)); }
+.home-page .hero_content { min-width: 0; flex: 1; }
+.home-page .hero_content_main_text { width: auto; }
+.home-page .hero_bottle { width: 30%; height: auto; object-fit: contain; }
+.home-page .instruction_line_content_list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.home-page .instruction_list_window { min-width: 0; }
+.home-page .instruction_list_all_text,
+.home-page .instruction_list_title { width: auto; }
+.home-page .instruction_list_line { max-width: calc(100% - 55px); }
+.home-page .end_container { gap: 24px; flex-wrap: wrap; }
+.home-page .end_column { flex: 1 1 200px; min-width: 0; }
+.home-page .end_line svg { max-width: 100%; }
+@media (max-width: 760px) {
+  .home-page .header_nav { flex-wrap: wrap; gap: 12px; }
+  .home-page .header_nav_list_all_text { order: 3; width: 100%; gap: 16px; justify-content: center; }
+  .home-page .header_nav_list_icons { gap: 22px; }
+  .home-page .header_nav_main_name { font-size: 34px; }
+  .home-page .hero_container { padding-top: 170px; padding-bottom: 70px; }
+  .home-page .hero_content_main_text { font-size: clamp(32px, 7vw, 46px); }
+  .home-page .hero_bottle { display: none; }
+  .home-page .instruction_title, .home-page .regime_title { font-size: 34px; }
+  .home-page .instruction_line_content_list { grid-template-columns: 1fr; padding-top: 35px; }
+  .home-page .regime_line_content_list { flex-direction: column; gap: 24px; padding-top: 35px; }
+  .home-page .regime_list_window { padding-right: 22px; }
+  .home-page .regime_window_small_text { max-width: 100%; }
+  .home-page .end_container { margin-top: 20px; }
+  .home-page .end_column { padding-top: 20px; }
+}

@@ -54,7 +54,7 @@ test('MySQL migration preserves catalogue, is repeatable, and supports quote API
           ...(method === 'GET' ? {} : { body: JSON.stringify(body ?? {}) }) });
         const setCookie = response.headers.get('set-cookie');
         if (setCookie) cookie = setCookie.split(';')[0];
-        const data = await response.json();
+        const data = response.headers.get('content-type')?.includes('application/json') ? await response.json() : await response.text();
         if (data.csrfToken) token = data.csrfToken;
         return { status: response.status, data, cookieAttributes: setCookie || '' };
       },
@@ -146,4 +146,5 @@ test('MySQL migration preserves catalogue, is repeatable, and supports quote API
   await require('./admin-workflow')(t, { pool, client, alice, bob, anonymous, password, base });
   await require('./storage-workflow')(t, pool);
   await require('./repeat-workflow')(t, { pool, alice, bob, anonymous });
+  await require('./completion-workflow')(t, { pool, alice, anonymous });
 });

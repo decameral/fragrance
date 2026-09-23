@@ -4,6 +4,8 @@ const { InputError } = require('../lib/quote');
 const { id } = require('../lib/validation');
 const { getOrder } = require('../lib/shop');
 const { allowed, changeStatus } = require('../lib/order-status');
+const { statistics, csv } = require('../lib/statistics');
+const { exportCatalog, importCatalog } = require('../lib/catalog-exchange');
 
 function date(value) {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value) || !Number.isFinite(Date.parse(value)) || new Date(value).toISOString().slice(0, 10) !== value) throw new InputError('Некорректная дата.');
@@ -14,6 +16,13 @@ function adminRoutes(pool) {
   // Mounted after the shared session, CSRF and authentication middleware.
   router.use((req, res, next) => { if (req.user.role !== 'admin') throw new InputError('Доступно только администратору.', 403); next(); });
   router.get('/images', async (req, res) => res.json({ images: await catalog.images() }));
+  router.get('/statistics', async (req, res) => res.json(await statistics(pool, req.query)));
+  router.get('/report.csv', async (req, res) => {
+    const data = await statistics(pool, req.query);
+    res.attachment('fragrance-report.csv').type('text/csv; charset=utf-8').send(csv(data));
+  });
+  router.get('/exchange', async (req, res) => res.attachment('fragrance-catalog.json').json(await exportCatalog(pool)));
+  router.post('/exchange', async (req, res) => res.json(await importCatalog(pool, req.body)));
   router.get('/catalog/:kind', async (req, res) => res.json(await catalog.list(pool, req.params.kind, req.query)));
   router.post('/catalog/:kind', async (req, res) => res.status(201).json(await catalog.save(pool, req.params.kind, undefined, req.body)));
   router.put('/catalog/:kind/:id', async (req, res) => res.json(await catalog.save(pool, req.params.kind, req.params.id, req.body)));

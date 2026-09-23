@@ -58,8 +58,31 @@
         <form id="change-status" class="account-form" hidden><label>Новый статус<select id="next-status"></select></label><button class="primary-button">Изменить статус</button></form>
         <p id="order-message" role="status"></p>
       </section>
+      <section class="account-card" aria-labelledby="statistics-title">
+        <h2 id="statistics-title">Статистика и отчёт</h2>
+        <p>Период — дата оформления заказа. Сумма и популярные атмосферы учитывают только завершённые заказы.</p>
+        <form id="statistics-form" class="admin-filters">
+          <label>Начало периода<input id="statistics-from" type="date" required></label>
+          <label>Конец периода<input id="statistics-to" type="date" required></label>
+          <button class="primary-button">Показать статистику</button>
+          <button id="download-report" class="secondary-button" type="button">Скачать отчёт CSV</button>
+        </form>
+        <p id="statistics-status" role="status"></p><div id="statistics-result"></div>
+      </section>
+      <section class="account-card" aria-labelledby="exchange-title">
+        <h2 id="exchange-title">Обмен каталогом</h2>
+        <p>JSON содержит только атмосферы, ноты, флаконы и совместимость, включая скрытые позиции. Данные покупателей и заказов не выгружаются.</p>
+        <button id="export-catalog" class="secondary-button">Скачать каталог JSON</button>
+        <form id="import-form" class="account-form">
+          <label>Файл каталога JSON (до 1 МБ)<input id="import-file" type="file" accept=".json,application/json" required></label>
+          <p>Импорт добавит новые позиции и обновит существующие по коду, включая цены и доступность. Совместимость атмосфер из файла будет заменена. Остальные позиции сохранятся. Перед импортом скачайте текущий каталог.</p>
+          <label class="import-confirm-label"><input id="import-confirm" type="checkbox" required> Подтверждаю обновление каталога выбранным файлом</label>
+          <button id="import-submit" class="primary-button">Импортировать каталог</button>
+        </form>
+        <p id="exchange-status" role="status"></p>
+      </section>
     </div>
   </main>
-  <script src="client.js"></script><script src="admin.js"></script>
+  <script src="client.js"></script><script src="admin.js"></script><script src="admin-reports.js"></script>
 </body>
 </html>

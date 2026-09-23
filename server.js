@@ -7,9 +7,10 @@ const { customerRoutes } = require('./routes/customer');
 function createApp(pool, options = {}) {
   const app = express();
   app.disable('x-powered-by');
+  app.use('/api/admin/exchange', express.json({ limit: '1mb' }));
   app.use(express.json({ limit: '16kb' }));
   // Publish only client assets, never the repository root.
-  for (const file of ['index.html', 'beginners.html', 'beginners.js', 'style.css', 'account.html', 'account.js', 'client.js', 'account.css', 'admin.html', 'admin.js', 'admin.css']) {
+  for (const file of ['index.html', 'home.css', 'beginners.html', 'beginners.js', 'style.css', 'account.html', 'account.js', 'client.js', 'account.css', 'admin.html', 'admin.js', 'admin.css', 'admin-reports.js']) {
     app.get(`/${file}`, (req, res) => res.sendFile(path.join(__dirname, file)));
   }
   app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));

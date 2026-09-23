@@ -25,3 +25,9 @@
   .compatibility-grid { grid-template-columns: 1fr; }
   .admin-pagination { justify-content: start; }
 }
+
+.report-table { width: 100%; border-collapse: collapse; margin: 16px 0; table-layout: fixed; }
+.report-table th, .report-table td { padding: 10px; text-align: left; border-bottom: 1px solid #ded4ca; overflow-wrap: anywhere; }
+#import-confirm { width: auto; }
+.account-form .import-confirm-label { display: flex; align-items: flex-start; gap: 10px; }
+.import-confirm-label input { flex: 0 0 auto; margin-top: 5px; }
