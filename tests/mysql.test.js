@@ -145,4 +145,5 @@ test('MySQL migration preserves catalogue, is repeatable, and supports quote API
   });
   await require('./admin-workflow')(t, { pool, client, alice, bob, anonymous, password, base });
   await require('./storage-workflow')(t, pool);
+  await require('./repeat-workflow')(t, { pool, alice, bob, anonymous });
 });

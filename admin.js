@@ -170,6 +170,7 @@ async function openOrder(id) {
     if (order.comment) body.append(node('p', `Комментарий: ${order.comment}`));
     const list = node('ul');
     order.items.forEach(item => list.append(node('li', `${item.perfume_name}: ${item.atmosphere_title}, ${item.accent_name}, ${item.bottle_name}, ${item.volume_ml} мл; ${item.quantity} × ${money(item.unit_minor)}`))); body.append(list);
+    body.append(Fragrance.orderHistory(order.history));
     $('next-status').replaceChildren(); order.allowedStatuses.forEach(status => option($('next-status'), status, statuses[status]));
     $('change-status').hidden = !order.allowedStatuses.length;
     $('order-message').textContent = order.allowedStatuses.length ? '' : 'Этот заказ завершён или отменён. Изменение статуса недоступно.';

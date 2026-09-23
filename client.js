@@ -23,5 +23,18 @@ window.Fragrance = (() => {
     if (className) element.className = className;
     return element;
   }
-  return { request, session, send, money, node };
+  function orderHistory(events = []) {
+    const section = node('section'); section.append(node('h3', 'История статусов'));
+    const labels = { new: 'Новый', processing: 'В работе', completed: 'Завершён', cancelled: 'Отменён' };
+    const list = node('ol');
+    for (const event of events) {
+      const status = labels[event.to_status] || event.to_status;
+      const description = event.event_kind === 'migration' ? `Зафиксирован при переносе: ${status}`
+        : event.event_kind === 'created' ? `Заказ создан: ${status}` : `${labels[event.from_status] || event.from_status} → ${status}`;
+      list.append(node('li', `${new Date(event.changed_at).toLocaleString('ru-RU')} — ${description}`));
+    }
+    section.append(events.length ? list : node('p', 'Событий пока нет.'));
+    return section;
+  }
+  return { request, session, send, money, node, orderHistory };
 })();

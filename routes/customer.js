@@ -6,7 +6,7 @@ const { rateLimit } = require('express-rate-limit');
 const { MysqlSessionStore } = require('../lib/session-store');
 const { InputError } = require('../lib/quote');
 const validate = require('../lib/validation');
-const { cart, changeCart, checkout, getOrder } = require('../lib/shop');
+const { cart, changeCart, checkout, getOrder, repeatOrder } = require('../lib/shop');
 const { adminRoutes } = require('./admin');
 const { changeStatus } = require('../lib/order-status');
 
@@ -98,6 +98,7 @@ function customerRoutes(pool, secret) {
     res.json({ orders });
   });
   router.get('/orders/:id', async (req, res) => res.json(await getOrder(pool, req.user.id, validate.id(req.params.id))));
+  router.post('/orders/:id/repeat', async (req, res) => res.json(await repeatOrder(pool, req.user.id, validate.id(req.params.id))));
   router.post('/orders/:id/cancel', async (req, res) => {
     await changeStatus(pool, validate.id(req.params.id), req.user.id, 'customer', 'new', 'cancelled', true);
     res.json({ ok: true });

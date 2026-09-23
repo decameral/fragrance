@@ -91,7 +91,7 @@ function orderDetails(order) {
   if (order.comment) content.append(node('p', `Комментарий: ${order.comment}`));
   const list = node('ul');
   for (const item of order.items) list.append(node('li', `${item.perfume_name}: ${item.atmosphere_title}, ${item.accent_name}; ${item.bottle_name}, ${item.volume_ml} мл. ${item.quantity} × ${money(item.unit_minor)}`));
-  content.append(list); return content;
+  content.append(list, Fragrance.orderHistory(order.history)); return content;
 }
 async function loadOrders() {
   const { orders } = await request('/api/orders');
@@ -106,6 +106,26 @@ async function loadOrders() {
       loading = true; body.textContent = 'Загружаем состав…';
       try {
         const full = await request(`/api/orders/${order.id}`); body.replaceChildren(orderDetails(full)); loaded = true;
+        const repeat = node('button', 'Повторить в корзину', 'secondary-button');
+        const message = node('p'); message.setAttribute('role', 'status');
+        body.append(node('p', 'Повтор добавит все композиции в корзину по текущим ценам. Новый заказ нужно подтвердить отдельно.'), repeat, message);
+        repeat.addEventListener('click', async () => {
+          if (basketBusy) return;
+          basketBusy = true; repeat.disabled = true; byId('checkout-button').disabled = true;
+          let added = false;
+          message.textContent = 'Проверяем состав и добавляем…';
+          try {
+            await send(`/api/orders/${order.id}/repeat`, 'POST');
+            added = true;
+            message.textContent = 'Композиции добавлены. Проверьте актуальную сумму в корзине.';
+            repeat.textContent = 'Добавлено в корзину';
+            await loadCart();
+          } catch (error) {
+            message.textContent = added ? 'Композиции добавлены, но корзину не удалось обновить. Перезагрузите страницу.' : error.message;
+            repeat.disabled = added;
+          }
+          finally { basketBusy = false; byId('checkout-button').disabled = !basket?.canCheckout; }
+        });
         if (full.status === 'new') {
           const cancel = node('button', 'Отменить заказ', 'secondary-button');
           cancel.addEventListener('click', async () => {
