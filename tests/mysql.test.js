@@ -7,7 +7,7 @@ const { migrate } = require('../scripts/migrate');
 const { quote } = require('../lib/quote');
 const { createApp } = require('../server');
 
-test('MySQL migration preserves catalogue, is repeatable, and supports quote API', { skip: !process.env.TEST_DB_NAME }, async t => {
+test('MySQL installation preserves catalogue, is repeatable, and supports quote API', { skip: !process.env.TEST_DB_NAME }, async t => {
   const database = process.env.TEST_DB_NAME;
   if (!/^fragrance_test_[a-z0-9_]+$/.test(database) || database === process.env.DB_NAME) {
     throw new Error('Use a separate fragrance_test_* database');
@@ -19,11 +19,23 @@ test('MySQL migration preserves catalogue, is repeatable, and supports quote API
   const pool = createPool({ database });
   t.after(async () => { await pool.end(); await admin.end(); });
   // Retain the isolated database for inspection; never delete an existing DB.
-  const source = await fs.readFile(path.join(__dirname, '../db/perfume_database.sql'), 'utf8');
+  const source = await fs.readFile(path.join(__dirname, process.env.TEST_DB_SETUP === 'legacy'
+    ? 'fixtures/legacy-database.sql' : '../db/schema.sql'), 'utf8');
   const seed = source.replace(/CREATE DATABASE[\s\S]*?;/i, '').replace(/USE scent_craft_db;/g, '').replace(/--[^\n]*/g, '');
-  for (const statement of seed.split(';').map(s => s.trim()).filter(Boolean)) await pool.query(statement);
+  const installation = await pool.getConnection();
+  try {
+    for (const statement of seed.split(';').map(s => s.trim()).filter(Boolean)) await installation.query(statement);
+  } finally { installation.release(); }
   const [before] = await pool.query('SELECT id, title, base_accord FROM atmospheres ORDER BY id');
+  const [installed] = await pool.query('SHOW TABLES');
+  if (process.env.TEST_DB_SETUP !== 'legacy') assert.equal(installed.length, 15);
+  const [marksBefore] = process.env.TEST_DB_SETUP === 'legacy' ? [[]]
+    : await pool.query('SELECT * FROM schema_migrations ORDER BY name');
   await migrate(pool); await migrate(pool);
+  const [tables] = await pool.query('SHOW TABLES');
+  assert.equal(tables.length, 15);
+  const [marksAfter] = await pool.query('SELECT * FROM schema_migrations ORDER BY name');
+  if (process.env.TEST_DB_SETUP !== 'legacy') assert.deepEqual(marksAfter, marksBefore);
   const [after] = await pool.query('SELECT id, title, base_accord FROM atmospheres ORDER BY id');
   assert.deepEqual(after, before);
   const [[bottles]] = await pool.query('SELECT COUNT(*) AS n FROM bottles');

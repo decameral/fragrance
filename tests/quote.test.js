@@ -30,7 +30,7 @@ test('HTTP validates input and does not publish private project files', async t 
   t.after(() => new Promise(resolve => server.close(resolve)));
   const url = `http://127.0.0.1:${server.address().port}`;
   assert.equal((await fetch(url)).status, 200);
-  for (const file of ['.env', 'server.js', 'package.json', 'db/perfume_database.sql', 'AGENTS.md']) {
+  for (const file of ['.env', 'server.js', 'package.json', 'db/schema.sql', 'AGENTS.md']) {
     assert.equal((await fetch(`${url}/${file}`)).status, 404);
   }
   const malformed = await fetch(`${url}/api/quote`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{' });

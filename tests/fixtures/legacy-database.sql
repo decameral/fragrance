@@ -1,3 +1,4 @@
+-- Historical three-table database, used ONLY to test upgrades.
 -- 1. Создание базы данных (если еще не создана)
 CREATE DATABASE IF NOT EXISTS scent_craft_db
   CHARACTER SET utf8mb4
@@ -46,7 +47,7 @@ INSERT INTO atmospheres (id, title, subtitle, description, image, base_accord) V
 
 USE scent_craft_db;
 
-UPDATE atmospheres 
+UPDATE atmospheres
 SET image = CASE id
     WHEN 'pine_forest' THEN 'images/pine.png'
     WHEN 'amalfi_sunset' THEN 'images/amalfi.png'

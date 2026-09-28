@@ -1,5 +1,7 @@
--- Structure reference after migrations 001-004. No data or credentials.
--- For application setup use the seed and npm run migrate; do not import over an existing database.
+-- Fragrance: complete initial installation for a NEW, EMPTY MySQL 8 database.
+-- Select the target database in Workbench before executing this file.
+-- Existing installations: use npm run migrate instead. Stop on the first SQL error.
+SET NAMES utf8mb4;
 
 CREATE TABLE `roles` (
   `code` varchar(20) NOT NULL,
@@ -187,3 +189,84 @@ CREATE TABLE `schema_migrations` (
   `applied_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Reference data and demonstration catalogue. No accounts or orders.
+START TRANSACTION;
+INSERT INTO roles VALUES ('customer', 'Покупатель'), ('admin', 'Администратор');
+INSERT INTO order_statuses VALUES ('new', 'Новый'), ('processing', 'В работе'), ('completed', 'Завершён'), ('cancelled', 'Отменён');
+INSERT INTO order_status_transitions VALUES
+('new', 'processing', 'admin'), ('new', 'cancelled', 'admin'),
+('processing', 'completed', 'admin'), ('processing', 'cancelled', 'admin'),
+('new', 'cancelled', 'customer');
+INSERT INTO accent_categories (name) VALUES
+('Свежесть'), ('Пряность'), ('Сладость'), ('Загадочность'), ('Текстура'), ('Пудровость'), ('Травы');
+INSERT INTO atmospheres (id, title, subtitle, description, image, base_accord) VALUES
+('pine_forest', 'Утро в сосновом лесу', 'Свежий, древесно-озоновый аромат', 'Прохладный утренний туман, запах влажной хвои, чистый озоновый воздух и теплая смола.', 'images/pine.png', '["Сибирская сосна", "Озон", "Влажная древесина", "Белый мускус"]'),
+('amalfi_sunset', 'Закат на побережье Амальфи', 'Яркий, цитрусово-морской аромат', 'Морской бриз, сочные итальянские цитрусы и согретые солнцем цветы нероли.', 'images/amalfi.png', '["Сицилийский лимон", "Морская соль", "Нероли", "Серая амбра"]'),
+('cozy_fireplace', 'Уютный вечер у камина', 'Теплый, пряный, древесный аромат', 'Потрескивание дров, мягкий плед, дымные ноты, пряный чабрец и сладковатая ваниль.', 'images/fireplace.png', '["Дымный кедр", "Гвоздика", "Амбра", "Бобы тонка"]'),
+('paris_coffee', 'Парижская кофейня', 'Гурманский, мягкий, цветочный аромат', 'Запах свежеобжаренных зерен, сливочных круассанов и нежного букета цветов на столе.', 'images/paris.png', '["Черный кофе", "Сливки", "Дамасская роза", "Сандал"]');
+
+INSERT INTO accents (id, name, category, description) VALUES
+('bergamot', 'Бергамот', 'Свежесть', 'Искристый цитрусовый акцент, придающий старту аромата сочность.'),
+('pink_pepper', 'Розовый перец', 'Пряность', 'Легкая пряная пикантность с сухими древесными оттенками.'),
+('green_tea', 'Зеленый чай', 'Свежесть', 'Травянистая прохлада и чувство чистоты.'),
+('mint', 'Мята', 'Свежесть', 'Ледяной, бодрящий штрих для верхней ноты.'),
+('vanilla', 'Мадагаскарская ваниль', 'Сладость', 'Мягкое, обволакивающее тепло без излишней приторности.'),
+('incense', 'Ладан', 'Загадочность', 'Глубокий, смолисто-дымный шлейф для медитативного настроения.'),
+('suede', 'Белая замша', 'Текстура', 'Бархатистая, мягкая кожаная нота для дорогого звучания.'),
+('iris', 'Ирис', 'Пудровость', 'Элегантный, слегка сухой пудрово-цветочный акцент.'),
+('rosemary', 'Розмарин', 'Травы', 'Ароматный пряно-смолистый травяной нюанс.'),
+('cardamom', 'Кардамон', 'Пряность', 'Теплый специевый акцент с лимонным подтоном.');
+
+INSERT INTO atmosphere_accents (atmosphere_id, accent_id) VALUES
+('pine_forest', 'bergamot'),
+('pine_forest', 'pink_pepper'),
+('pine_forest', 'green_tea'),
+('pine_forest', 'mint'),
+('amalfi_sunset', 'bergamot'),
+('amalfi_sunset', 'mint'),
+('amalfi_sunset', 'iris'),
+('amalfi_sunset', 'rosemary'),
+('cozy_fireplace', 'vanilla'),
+('cozy_fireplace', 'pink_pepper'),
+('cozy_fireplace', 'incense'),
+('cozy_fireplace', 'suede'),
+('paris_coffee', 'vanilla'),
+('paris_coffee', 'iris'),
+('paris_coffee', 'suede'),
+('paris_coffee', 'cardamom');
+INSERT INTO bottles (name, volume_ml, price) VALUES
+  ('Классический', 30, 10.00), ('Классический', 50, 14.00),
+  ('Классический', 100, 20.00), ('Гранёный', 30, 15.00),
+  ('Гранёный', 50, 19.00), ('Гранёный', 100, 27.00);
+
+-- This installation already includes every step of migrations 001-004.
+INSERT INTO schema_migrations (name) VALUES
+('001_constructor.sql:1'),
+('001_constructor.sql:2'),
+('001_constructor.sql:3'),
+('001_constructor.sql:4'),
+('002_customer_orders.sql:1'),
+('002_customer_orders.sql:2'),
+('002_customer_orders.sql:3'),
+('002_customer_orders.sql:4'),
+('002_customer_orders.sql:5'),
+('003_catalog_visibility.sql:1'),
+('003_catalog_visibility.sql:2'),
+('004_storage.sql:1'),
+('004_storage.sql:2'),
+('004_storage.sql:3'),
+('004_storage.sql:4'),
+('004_storage.sql:5'),
+('004_storage.sql:6'),
+('004_storage.sql:7'),
+('004_storage.sql:8'),
+('004_storage.sql:9'),
+('004_storage.sql:10'),
+('004_storage.sql:11'),
+('004_storage.sql:12'),
+('004_storage.sql:13'),
+('004_storage.sql:14'),
+('004_storage.sql:15'),
+('004_storage.sql:16');
+COMMIT;
