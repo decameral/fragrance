@@ -1,0 +1,425 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="classes-A3" name="Classes — domain analysis model (A3)">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1587" pageHeight="1123" grid="1" gridSize="10" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="e0" edge="1" parent="1" source="User" target="Order" style="endArrow=none;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;exitX=1.0;exitY=0.5;entryX=0.0;entryY=0.42105263157894735;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="Order" target="OrderItem" style="endArrow=none;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;exitX=1.0;exitY=0.42105263157894735;entryX=0.0;entryY=0.6666666666666666;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="Bottle" target="OrderItem" style="endArrow=none;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;exitX=0.0;exitY=0.6666666666666666;entryX=1.0;entryY=0.6666666666666666;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="User" target="CartItem" style="endArrow=none;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;exitX=0.5161290322580645;exitY=1.0;entryX=0.5161290322580645;entryY=0.0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="Atmosphere" target="Accent" style="endArrow=none;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;exitX=1.0;exitY=0.5;entryX=0.0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="Order" target="StatusEvent" style="endArrow=none;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;exitX=0.8064516129032258;exitY=1.0;entryX=0.5161290322580645;entryY=0.0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="670" y="330" />
+              <mxPoint x="1360" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="CheckoutControl" target="CartItem" style="endArrow=open;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;dashed=1;exitX=0.0967741935483871;exitY=0.0;entryX=0.0967741935483871;entryY=1.0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="CatalogControl" target="Atmosphere" style="endArrow=open;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;dashed=1;exitX=0.0967741935483871;exitY=0.0;entryX=0.0967741935483871;entryY=1.0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="CatalogControl" target="Accent" style="endArrow=open;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;dashed=1;exitX=0.8709677419354839;exitY=0.0;entryX=0.0967741935483871;entryY=1.0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="690" y="550" />
+              <mxPoint x="840" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="ReportControl" target="OrderItem" style="endArrow=open;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;dashed=1;exitX=0.0967741935483871;exitY=0.0;entryX=0.0967741935483871;entryY=1.0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="840" y="560" />
+              <mxPoint x="800" y="560" />
+              <mxPoint x="800" y="190" />
+              <mxPoint x="840" y="190" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="OrderControl" target="StatusEvent" style="endArrow=open;endFill=0;startArrow=none;strokeColor=#000000;strokeWidth=1.3;rounded=0;html=0;dashed=1;exitX=0.0967741935483871;exitY=0.0;entryX=0.0967741935483871;entryY=1.0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="User" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="30" y="60" width="310" height="160" />
+        </mxCell>
+        <mxCell id="Usertitle" value="«entity» User" vertex="1" parent="User" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="Usersep" value="" vertex="1" parent="User" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="Userr0" value="− id: Integer" vertex="1" parent="User" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="40" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Userr1" value="− email: String" vertex="1" parent="User" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Usersep2" value="" vertex="1" parent="User" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="98" width="310" height="0" />
+        </mxCell>
+        <mxCell id="Userr3" value="+ login()" vertex="1" parent="User" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="112" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Userr4" value="+ logout()" vertex="1" parent="User" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="136" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Order" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="420" y="60" width="310" height="190" />
+        </mxCell>
+        <mxCell id="Ordertitle" value="«entity» Order" vertex="1" parent="Order" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="Ordersep" value="" vertex="1" parent="Order" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="Orderr0" value="− id: Integer" vertex="1" parent="Order" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="40" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Orderr1" value="− status: String" vertex="1" parent="Order" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Orderr2" value="− totalMinor: Integer" vertex="1" parent="Order" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="88" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Ordersep3" value="" vertex="1" parent="Order" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="122" width="310" height="0" />
+        </mxCell>
+        <mxCell id="Orderr4" value="+ cancel()" vertex="1" parent="Order" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="136" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Orderr5" value="+ repeat()" vertex="1" parent="Order" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="160" width="300" height="24" />
+        </mxCell>
+        <mxCell id="OrderItem" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="810" y="60" width="310" height="120" />
+        </mxCell>
+        <mxCell id="OrderItemtitle" value="«entity» OrderItem" vertex="1" parent="OrderItem" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="OrderItemsep" value="" vertex="1" parent="OrderItem" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="OrderItemr0" value="− perfumeName: String" vertex="1" parent="OrderItem" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="40" width="300" height="24" />
+        </mxCell>
+        <mxCell id="OrderItemr1" value="− quantity: Integer" vertex="1" parent="OrderItem" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="OrderItemr2" value="− unitMinor: Integer" vertex="1" parent="OrderItem" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="88" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Bottle" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1200" y="60" width="310" height="120" />
+        </mxCell>
+        <mxCell id="Bottletitle" value="«entity» Bottle" vertex="1" parent="Bottle" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="Bottlesep" value="" vertex="1" parent="Bottle" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="Bottler0" value="− id: Integer" vertex="1" parent="Bottle" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="40" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Bottler1" value="− volumeMl: Integer" vertex="1" parent="Bottle" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Bottler2" value="− price: Decimal" vertex="1" parent="Bottle" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="88" width="300" height="24" />
+        </mxCell>
+        <mxCell id="CartItem" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="30" y="420" width="310" height="140" />
+        </mxCell>
+        <mxCell id="CartItemtitle" value="«entity» CartItem" vertex="1" parent="CartItem" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="CartItemsep" value="" vertex="1" parent="CartItem" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="CartItemr0" value="− perfumeName: String" vertex="1" parent="CartItem" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="40" width="300" height="24" />
+        </mxCell>
+        <mxCell id="CartItemr1" value="− quantity: Integer" vertex="1" parent="CartItem" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="CartItemsep2" value="" vertex="1" parent="CartItem" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="98" width="310" height="0" />
+        </mxCell>
+        <mxCell id="CartItemr3" value="+ changeQuantity()" vertex="1" parent="CartItem" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="112" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Atmosphere" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="420" y="420" width="310" height="120" />
+        </mxCell>
+        <mxCell id="Atmospheretitle" value="«entity» Atmosphere" vertex="1" parent="Atmosphere" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="Atmospheresep" value="" vertex="1" parent="Atmosphere" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="Atmospherer0" value="− id: String" vertex="1" parent="Atmosphere" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="40" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Atmospherer1" value="− title: String" vertex="1" parent="Atmosphere" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Atmospherer2" value="− pricePerMl: Decimal" vertex="1" parent="Atmosphere" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="88" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Accent" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="810" y="420" width="310" height="120" />
+        </mxCell>
+        <mxCell id="Accenttitle" value="«entity» Accent" vertex="1" parent="Accent" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="Accentsep" value="" vertex="1" parent="Accent" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="Accentr0" value="− id: String" vertex="1" parent="Accent" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="40" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Accentr1" value="− name: String" vertex="1" parent="Accent" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="Accentr2" value="− pricePerMl: Decimal" vertex="1" parent="Accent" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="88" width="300" height="24" />
+        </mxCell>
+        <mxCell id="StatusEvent" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1200" y="420" width="310" height="120" />
+        </mxCell>
+        <mxCell id="StatusEventtitle" value="«entity» StatusEvent" vertex="1" parent="StatusEvent" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="StatusEventsep" value="" vertex="1" parent="StatusEvent" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="StatusEventr0" value="− fromStatus: String?" vertex="1" parent="StatusEvent" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="40" width="300" height="24" />
+        </mxCell>
+        <mxCell id="StatusEventr1" value="− toStatus: String" vertex="1" parent="StatusEvent" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="StatusEventr2" value="− changedAt: DateTime" vertex="1" parent="StatusEvent" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="88" width="300" height="24" />
+        </mxCell>
+        <mxCell id="CheckoutControl" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="30" y="780" width="310" height="120" />
+        </mxCell>
+        <mxCell id="CheckoutControltitle" value="«control» CheckoutControl" vertex="1" parent="CheckoutControl" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="CheckoutControlsep" value="" vertex="1" parent="CheckoutControl" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="CheckoutControlsep0" value="" vertex="1" parent="CheckoutControl" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="50" width="310" height="0" />
+        </mxCell>
+        <mxCell id="CheckoutControlr1" value="+ quote()" vertex="1" parent="CheckoutControl" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="CheckoutControlr2" value="+ checkout()" vertex="1" parent="CheckoutControl" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="88" width="300" height="24" />
+        </mxCell>
+        <mxCell id="CatalogControl" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="420" y="780" width="310" height="140" />
+        </mxCell>
+        <mxCell id="CatalogControltitle" value="«control» CatalogControl" vertex="1" parent="CatalogControl" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="CatalogControlsep" value="" vertex="1" parent="CatalogControl" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="CatalogControlsep0" value="" vertex="1" parent="CatalogControl" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="50" width="310" height="0" />
+        </mxCell>
+        <mxCell id="CatalogControlr1" value="+ save()" vertex="1" parent="CatalogControl" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="CatalogControlr2" value="+ compatibility()" vertex="1" parent="CatalogControl" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="88" width="300" height="24" />
+        </mxCell>
+        <mxCell id="CatalogControlr3" value="+ importCatalog()" vertex="1" parent="CatalogControl" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="112" width="300" height="24" />
+        </mxCell>
+        <mxCell id="ReportControl" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="810" y="780" width="310" height="120" />
+        </mxCell>
+        <mxCell id="ReportControltitle" value="«control» ReportControl" vertex="1" parent="ReportControl" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="ReportControlsep" value="" vertex="1" parent="ReportControl" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="ReportControlsep0" value="" vertex="1" parent="ReportControl" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="50" width="310" height="0" />
+        </mxCell>
+        <mxCell id="ReportControlr1" value="+ statistics()" vertex="1" parent="ReportControl" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="ReportControlr2" value="+ csv()" vertex="1" parent="ReportControl" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="88" width="300" height="24" />
+        </mxCell>
+        <mxCell id="OrderControl" value="" vertex="1" parent="1" style="shape=rectangle;html=0;fillColor=#ffffff;strokeColor=#000000;fontSize=15;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1200" y="780" width="310" height="90" />
+        </mxCell>
+        <mxCell id="OrderControltitle" value="«control» OrderControl" vertex="1" parent="OrderControl" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="0" width="310" height="36" />
+        </mxCell>
+        <mxCell id="OrderControlsep" value="" vertex="1" parent="OrderControl" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="36" width="310" height="0" />
+        </mxCell>
+        <mxCell id="OrderControlsep0" value="" vertex="1" parent="OrderControl" style="shape=line;strokeColor=#000000;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="0" y="50" width="310" height="0" />
+        </mxCell>
+        <mxCell id="OrderControlr1" value="+ changeStatus()" vertex="1" parent="OrderControl" style="text;html=0;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="5" y="64" width="300" height="24" />
+        </mxCell>
+        <mxCell id="labelbg0" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="461.5" y="1049.0" width="657.0" height="22" />
+        </mxCell>
+        <mxCell id="label0" value="Analysis model, not JavaScript classes or ORM. Selected associations and responsibilities." vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="461.5" y="1049.0" width="657.0" height="22" />
+        </mxCell>
+        <mxCell id="labelbg1" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="355.0" y="117.5" width="50.0" height="19" />
+        </mxCell>
+        <mxCell id="label1" value="places" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="355.0" y="117.5" width="50.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg2" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="358.5" y="144.5" width="19.0" height="19" />
+        </mxCell>
+        <mxCell id="label2" value="1" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="358.5" y="144.5" width="19.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg3" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="376.0" y="144.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="label3" value="0..*" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="376.0" y="144.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg4" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="739.5" y="117.5" width="61.0" height="19" />
+        </mxCell>
+        <mxCell id="label4" value="contains" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="739.5" y="117.5" width="61.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg5" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="748.5" y="144.5" width="19.0" height="19" />
+        </mxCell>
+        <mxCell id="label5" value="1" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="748.5" y="144.5" width="19.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg6" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="766.0" y="144.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="label6" value="1..*" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="766.0" y="144.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg7" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1122.5" y="117.5" width="75.0" height="19" />
+        </mxCell>
+        <mxCell id="label7" value="selected in" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1122.5" y="117.5" width="75.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg8" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1162.5" y="144.5" width="19.0" height="19" />
+        </mxCell>
+        <mxCell id="label8" value="1" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1162.5" y="144.5" width="19.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg9" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1132.0" y="144.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="label9" value="0..*" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1132.0" y="144.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg10" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="169.0" y="297.5" width="42.0" height="19" />
+        </mxCell>
+        <mxCell id="label10" value="owns" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="169.0" y="297.5" width="42.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg11" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="207.5" y="238.5" width="19.0" height="19" />
+        </mxCell>
+        <mxCell id="label11" value="1" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="207.5" y="238.5" width="19.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg12" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="201.0" y="382.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="label12" value="0..*" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="201.0" y="382.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg13" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="739.0" y="457.5" width="62.0" height="19" />
+        </mxCell>
+        <mxCell id="label13" value="matches" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="739.0" y="457.5" width="62.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg14" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="742.0" y="484.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="label14" value="0..*" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="742.0" y="484.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg15" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="766.0" y="484.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="label15" value="0..*" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="766.0" y="484.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg16" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="998.5" y="307.5" width="33.0" height="19" />
+        </mxCell>
+        <mxCell id="label16" value="has" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="998.5" y="307.5" width="33.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg17" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="687.5" y="268.5" width="19.0" height="19" />
+        </mxCell>
+        <mxCell id="label17" value="1" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="687.5" y="268.5" width="19.0" height="19" />
+        </mxCell>
+        <mxCell id="labelbg18" value="" vertex="1" parent="1" style="strokeColor=none;fillColor=#ffffff;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1371.0" y="382.5" width="32.0" height="19" />
+        </mxCell>
+        <mxCell id="label18" value="1..*" vertex="1" parent="1" style="text;html=0;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontStyle=0;fontFamily=Arial;fontColor=#000000;">
+          <mxGeometry as="geometry" x="1371.0" y="382.5" width="32.0" height="19" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
